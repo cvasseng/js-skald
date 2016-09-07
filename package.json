@@ -1,0 +1,14 @@
+{
+  "name": "js-skald",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "run": "node ./bin/js-skald.js"
+  },
+  "dependencies": {
+    "colors":"*",    
+    "async": "*",    
+    "mkdirp": "*",
+    "handlebars": "*"
+  }
+}

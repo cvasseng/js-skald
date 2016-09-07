@@ -1,0 +1,25 @@
+## {{#each info.namespace}}{{this}}.{{/each}}{{info.name}} - {{{info.type}}}
+
+**{{{info.blurb}}}**
+
+{{{info.description}}}
+{{#if arguments}}
+
+**Arguments**
+
+{{#each arguments}}
+  * `{{{@key}}}` - {{{type}}}: {{{description}}}
+{{/each}}
+{{/if}}
+
+{{#if return}}
+**Return**
+
+`{{return.type}}` - {{{return.description}}}
+
+{{/if}}
+**Definition**
+
+`{{{info.filename}}}:{{info.lineNumber}}`:  
+`{{{info.definition}}}`
+
