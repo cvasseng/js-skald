@@ -20,16 +20,17 @@ In cases where JavaScript objects are used, but without using prototypes. Spits 
     function AnObject (thing) {
       return {
         /** This is the blurb.  
-         - This is the description
-         - @memberof AnObject
-         - @a {number} - this is an arg description
-         - @b {string} - this too
+        * This is the description
+        * @memberof AnObject
+        * @a {number} - this is an arg description
+        * @b {string} - this too
+        */
         foobar: function (a, b) {
           console.log(thing, a, b);
         }
       }
     }
-    
+
     var myInstance = AnObject('Hello world!');
     myInstance.foobar();
 
