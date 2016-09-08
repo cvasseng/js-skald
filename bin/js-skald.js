@@ -45,7 +45,6 @@ mkdirp(outdir, function () {
                 target.namespaces = target.namespaces || {};
               
                 target.namespaces[ns] = target.namespaces[ns] || {
-                  name: ns,
                   namespaces: {},
                   children: []
                 };

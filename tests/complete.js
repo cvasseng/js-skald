@@ -70,3 +70,15 @@ function Test() {
     }
   };
 }
+
+
+/** This is an object constructor
+ * @constructor
+ * @attributes {object} - The attributes
+ *   > name {string} - a string object
+ *   > nested {object} - a nested object
+ *     > subName {string} - nested property
+ */
+function Hello(attributes) {
+
+}
