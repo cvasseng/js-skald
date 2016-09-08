@@ -57,123 +57,123 @@ In cases where JavaScript objects are used, but when not using using prototypes.
     }
 
 **Generates the following JSON**
-       
-  {
-    "name": "global",
-    "namespaces": {
-      "global": {
-        "namespaces": {},
-        "children": [
-          {
-            "info": {
-              "name": "AnObject",
-              "blurb": "A simple object",
-              "description": "Creates an object with the foobar function.",
-              "type": "object constructor",
-              "filename": "tests/attributes.js",
-              "lineNumber": 11,
-              "namespace": [
-                "global"
-              ],
-              "definition": "function AnObject (attributes, thing) {"
-            },
-            "arguments": {
-              "attributes": {
-                "description": "the object properties",
-                "type": "object",
+           
+    {
+      "name": "global",
+      "namespaces": {
+        "global": {
+          "namespaces": {},
+          "children": [
+            {
+              "info": {
+                "name": "AnObject",
+                "blurb": "A simple object",
+                "description": "Creates an object with the foobar function.",
+                "type": "object constructor",
+                "filename": "tests/attributes.js",
+                "lineNumber": 11,
+                "namespace": [
+                  "global"
+                ],
+                "definition": "function AnObject (attributes, thing) {"
+              },
+              "arguments": {
                 "attributes": {
-                  "name": {
-                    "description": "the name of the object",
-                    "type": "string"
-                  },
-                  "size": {
-                    "description": "the size of the object",
-                    "type": "object",
-                    "attributes": {
-                      "x": {
-                        "description": "x-component of the size",
-                        "type": "number"
-                      },
-                      "y": {
-                        "description": "y-component of the size",
-                        "type": "number"
+                  "description": "the object properties",
+                  "type": "object",
+                  "attributes": {
+                    "name": {
+                      "description": "the name of the object",
+                      "type": "string"
+                    },
+                    "size": {
+                      "description": "the size of the object",
+                      "type": "object",
+                      "attributes": {
+                        "x": {
+                          "description": "x-component of the size",
+                          "type": "number"
+                        },
+                        "y": {
+                          "description": "y-component of the size",
+                          "type": "number"
+                        }
                       }
                     }
                   }
-                }
-              },
-              "thing": {
-                "description": "the string to log",
-                "type": "string"
-              }
-            }
-          }
-        ]
-      },
-      "AnObject": {
-        "namespaces": {},
-        "children": [
-          {
-            "info": {
-              "name": "foobar",
-              "blurb": "This is the blurb.",
-              "description": "This is the description",
-              "type": "member.function",
-              "filename": "tests/attributes.js",
-              "lineNumber": 26,
-              "namespace": [
-                "AnObject"
-              ],
-              "definition": "foobar: function (a, b) {"
-            },
-            "arguments": {
-              "a": {
-                "description": "this is an arg description",
-                "type": "number"
-              },
-              "b": {
-                "description": "this too",
-                "type": "string"
-              }
-            },
-            "return": {
-              "description": "an object",
-              "type": "object",
-              "attributes": {
+                },
                 "thing": {
-                  "description": "constructor thing",
+                  "description": "the string to log",
                   "type": "string"
-                },
-                "attributes": {
-                  "description": "the object passed to the constructor",
-                  "type": "object"
-                },
-                "passed": {
-                  "description": "object of args passed to the function",
-                  "type": "object",
-                  "attributes": {
-                    "a": {
-                      "description": "a arg",
-                      "type": "anything"
-                    },
-                    "b": {
-                      "description": "b arg",
-                      "type": "anything"
-                    }
-                  }
-                },
-                "something": {
-                  "description": "",
-                  "type": "unknown"
                 }
               }
             }
-          }
-        ]
-      }
-    },
-    "children": []
-  }
+          ]
+        },
+        "AnObject": {
+          "namespaces": {},
+          "children": [
+            {
+              "info": {
+                "name": "foobar",
+                "blurb": "This is the blurb.",
+                "description": "This is the description",
+                "type": "member.function",
+                "filename": "tests/attributes.js",
+                "lineNumber": 26,
+                "namespace": [
+                  "AnObject"
+                ],
+                "definition": "foobar: function (a, b) {"
+              },
+              "arguments": {
+                "a": {
+                  "description": "this is an arg description",
+                  "type": "number"
+                },
+                "b": {
+                  "description": "this too",
+                  "type": "string"
+                }
+              },
+              "return": {
+                "description": "an object",
+                "type": "object",
+                "attributes": {
+                  "thing": {
+                    "description": "constructor thing",
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "description": "the object passed to the constructor",
+                    "type": "object"
+                  },
+                  "passed": {
+                    "description": "object of args passed to the function",
+                    "type": "object",
+                    "attributes": {
+                      "a": {
+                        "description": "a arg",
+                        "type": "anything"
+                      },
+                      "b": {
+                        "description": "b arg",
+                        "type": "anything"
+                      }
+                    }
+                  },
+                  "something": {
+                    "description": "",
+                    "type": "unknown"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "children": []
+    }
 
 Of course, things that "aren't" objects can also be commented.
 
