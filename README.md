@@ -181,9 +181,13 @@ Namespaces are deduced automatically if defining things as such:
   
     MyNamespace.MyNestedNamespace.fn = function (..) {..}
 
-## Ideas
+## TODO
 
   * Inherit comments
+  * Enum types
+  * Parse (optional) thing
+  * `@type` override
+  * `@usage` start parsing usage information: parse until eof or another `@` was found
 
 ## License
 
