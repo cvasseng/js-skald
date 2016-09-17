@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /******************************************************************************
 
 js-skald - the simple JavaScript documentation generator

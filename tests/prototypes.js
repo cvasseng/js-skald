@@ -10,7 +10,11 @@
  * @example My named example
  *
  * //Create a new instance of MyClass
- * var myClass = new MyClass();
+ * var myClass = new MyClass({
+ *     thing: function () {
+ *         console.log('HelloWorld');
+ *     }
+ * });
  *
  * @example
  *
