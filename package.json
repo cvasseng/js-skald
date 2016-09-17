@@ -9,6 +9,7 @@
     "js-skald": "./bin/js-skald.js"
   },
   "dependencies": {
+    "uglify-js": "*",
     "colors":"*",    
     "async": "*",    
     "mkdirp": "*",
