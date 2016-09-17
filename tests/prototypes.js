@@ -18,15 +18,17 @@
  * (new MyClass()).helloWorld();
  *
  * @emits MyEvent {object} - emitted at some point
- *   > a {string}
- *   > b {string}
+ *   > a {string} - the a value
+ *   > b {string} - the b value
  */
 myNamespace.MyClass = function () {
     
 }
 
-/** Say hello */
-myNamespace.MyClass.prototype.helloWorld = function () {
+/** Say hello 
+ * @param text {string} - the text to output
+ */
+myNamespace.MyClass.prototype.helloWorld = function (text) {
     console.log('Hello world!');
 };
 

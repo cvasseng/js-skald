@@ -1,24 +1,72 @@
 ## {{#each info.namespace}}{{this}}.{{/each}}{{info.name}} - {{{info.type}}}
+{{#if info.deprecated}}
+**WARNING: This has been deprecated!**
 
+{{/if}}
 **{{{info.blurb}}}**
-
+{{#if info.description}}
 {{{info.description}}}
-{{#if arguments}}
 
-**Arguments**
+{{/if}}
+{{#if examples}}
+### Examples
 
-{{#each arguments}}
-  * `{{{@key}}}` - {{{type}}}: {{{description}}}
+{{#each examples}}
+**Example{{#if name}}: {{name}}{{/if}}**
+    
+    {{code}}
+
 {{/each}}
 {{/if}}
+{{#if methods}}
+### Methods
+{{#each methods}}
+  * `{{info.name}}({{#each arguments}}{{#if @index}}, {{/if}}{{@key}} [{{type}}]{{/each}})`: {{info.blurb}}
+{{/each}}
 
+{{/if}}
+{{#if emits}}
+### Emitted Events
+{{#each emits}}
+  * `{{@key}}`: {{description}}
+{{> attributes}}
+{{/each}}
+
+{{/if}}
+{{#if arguments}}
+### Arguments
+{{#each arguments}}
+  * `{{{@key}}} - {{{type}}}`: {{{description}}}
+{{/each}}
+
+{{/if}}
+{{#if members}}
+### Members
+{{#each members}}
+  * `{{info.name}} - {{info.type}}`: {{info.blurb}}
+{{#if attributes}}
+{{#each attributes}}
+    * `{{@key}} ({{type}})` - {{description}}
+{{> attributes}}
+{{/each}}
+{{/if}}
+{{/each}}
+
+{{/if}}
 {{#if return}}
-**Return**
+### Return
 
 `{{return.type}}` - {{{return.description}}}
 
 {{/if}}
-**Definition**
+{{#if todo}}
+### Todo
+{{#each todo}}
+  * {{this}}
+{{/each}}
+
+{{/if}}
+### Definition
 
 `{{{info.filename}}}:{{info.lineNumber}}`:  
 `{{{info.definition}}}`
