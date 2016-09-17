@@ -2,6 +2,8 @@
  *
  * This is a simple prototype class.
  *
+ * @todo This is not doing anything at the moment
+ * @deprecated
  * @constructor
  * 
  * @example My named example
@@ -10,6 +12,7 @@
  * var myClass = new MyClass();
  *
  * @example
+ *
  * //Say hello
  * (new MyClass()).helloWorld();
  */

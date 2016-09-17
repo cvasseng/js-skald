@@ -181,12 +181,27 @@ Namespaces are deduced automatically if defining things as such:
   
     MyNamespace.MyNestedNamespace.fn = function (..) {..}
 
+## Supported Keywords
+ 
+**General**
+
+  * `@deprecated`: mark as deprecated
+  * `@example [title]`: add an example - will include everything until the next keyword.
+  * `@type {type}`: override the deduced type
+  * `@memberof namespace`: set as a member of a given namespace
+  * `@todo <description>`: add a todo entry
+
+**Functions**
+  
+  * `@param name {type} - description`: document a function argument
+  * `@return {type} - description`: document a function return
+  * `@constructor`: mark as being an object constructor
+
 ## TODO
 
   * Inherit comments
   * Enum types
   * Parse (optional) thing
-  * `@usage` start parsing usage information: parse until eof or another `@` was found
 
 ## License
 
