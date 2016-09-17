@@ -20,8 +20,10 @@
  * @emits MyEvent {object} - emitted at some point
  *   > a {string} - the a value
  *   > b {string} - the b value
+ *
+ * @param args {object} - the arguments
  */
-myNamespace.MyClass = function () {
+myNamespace.MyClass = function (args) {
     
 }
 
@@ -36,3 +38,13 @@ myNamespace.MyClass.prototype.helloWorld = function (text) {
  * @type {string}
  */
 myNamespace.MyClass.prototype.Data = '123';
+
+/** A simple function */
+function foobar() {
+
+}
+
+/** A simple namespaced function */
+myNamespace.test = function () {
+
+}

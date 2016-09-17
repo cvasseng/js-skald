@@ -22,7 +22,11 @@
 {{#if methods}}
 ### Methods
 {{#each methods}}
-  * `{{info.name}}({{#each arguments}}{{#if @index}}, {{/if}}{{@key}} [{{type}}]{{/each}})`: {{info.blurb}}
+  * `{{info.name}}({{#each arguments}}{{#if @index}}, {{/if}}{{@key}}{{/each}})`: {{info.blurb}}
+{{#each arguments}}
+    * `{{@key}}`: `{{{type}}}`, {{description}}
+    {{> attributes}}
+{{/each}}
 {{/each}}
 
 {{/if}}

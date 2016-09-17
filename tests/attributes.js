@@ -34,3 +34,8 @@ function AnObject (attributes, thing) {
     }
   }
 } 
+
+/** A simple function */
+function foobar() {
+  
+}
