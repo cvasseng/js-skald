@@ -1,4 +1,4 @@
-## {{#each info.namespace}}{{this}}.{{/each}}{{info.name}} - {{{info.type}}}
+## {{#each info.namespace}}{{this}}.{{/each}}{{info.name}}{{#if arguments}}({{#each arguments}}{{#if @index}}, {{/if}}{{@key}}{{/each}}){{/if}} - {{{info.type}}}
 {{#if info.deprecated}}
 **WARNING: This has been deprecated!**
 
@@ -13,11 +13,19 @@
 ### Examples
 
 {{#each examples}}
-**Example{{#if name}}: {{name}}{{/if}}**
+{{#if name}}**{{name}}**{{/if}}
     
     {{{code}}}
 
 {{/each}}
+{{/if}}
+{{#if arguments}}
+### Arguments
+{{#each arguments}}
+  * `{{{@key}}} - {{{type}}}`: {{{description}}}
+{{> attributes}}
+{{/each}}
+
 {{/if}}
 {{#if methods}}
 ### Methods
@@ -34,14 +42,6 @@
 ### Emitted Events
 {{#each emits}}
   * `{{@key}}`: {{description}}
-{{> attributes}}
-{{/each}}
-
-{{/if}}
-{{#if arguments}}
-### Arguments
-{{#each arguments}}
-  * `{{{@key}}} - {{{type}}}`: {{{description}}}
 {{> attributes}}
 {{/each}}
 
