@@ -5,6 +5,9 @@
   "scripts": {
     "run": "node ./bin/js-skald.js"
   },
+  "bin": {
+    "js-skald": "./bin/js-skald.js"
+  },
   "dependencies": {
     "colors":"*",    
     "async": "*",    
