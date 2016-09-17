@@ -190,12 +190,39 @@ Namespaces are deduced automatically if defining things as such:
   * `@type {type}`: override the deduced type
   * `@memberof namespace`: set as a member of a given namespace
   * `@todo <description>`: add a todo entry
+  * `@author <author name>`: set the author of the documented thing
 
 **Functions**
   
   * `@param name {type} - description`: document a function argument
   * `@return {type} - description`: document a function return
   * `@constructor`: mark as being an object constructor
+
+**Objects**
+
+  * `@emits [name] {type} - description`: document an event emit 
+
+## Documenting Object Attributes
+
+Attributes can be documented using the `>` symbol.
+
+Example:
+    
+    @returns {object} - a size object
+      > width {number} - the width
+      > height {number} - the height
+
+They can also be nested:
+    
+    @returns {object} - a complex object
+      > foobar {number} - something
+      > size {object} - a size
+        > width {number}
+        > height {number}
+      > backToRoot {string}
+
+The indentation decides which goes where. It doesn't matter
+if you use tabs or spaces, but the use of either should be consistent.
 
 ## TODO
 

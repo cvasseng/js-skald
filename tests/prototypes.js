@@ -2,6 +2,7 @@
  *
  * This is a simple prototype class.
  *
+ * @author chris chris
  * @todo This is not doing anything at the moment
  * @deprecated
  * @constructor
@@ -15,12 +16,21 @@
  *
  * //Say hello
  * (new MyClass()).helloWorld();
+ *
+ * @emits MyEvent {object} - emitted at some point
+ *   > a {string}
+ *   > b {string}
  */
-function MyClass () {
+myNamespace.MyClass = function () {
     
 }
 
 /** Say hello */
-MyClass.prototype.helloWorld = function () {
+myNamespace.MyClass.prototype.helloWorld = function () {
     console.log('Hello world!');
 };
+
+/** Some data 
+ * @type {string}
+ */
+myNamespace.MyClass.prototype.Data = '123';

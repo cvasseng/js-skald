@@ -20,7 +20,8 @@ var parser = require('../lib/parser.js'),
     args = process.argv,
     outdir = __dirname + '/../output/',
     funs = [],
-    mkdirp = require('mkdirp')
+    mkdirp = require('mkdirp'),
+    transform = require('../lib/transformtree.js')
 ;
 
 require('colors');
@@ -35,26 +36,7 @@ mkdirp(outdir, function () {
       funs.push(
         function (next) {
           parser.parseFile(filename, function (blocks) {
-            blocks.forEach(function (block) {
-
-              var ns = block.data.info.namespace,
-                  target = blockTree
-              ;
-
-              ns.forEach(function (ns) {
-                target.namespaces = target.namespaces || {};
-              
-                target.namespaces[ns] = target.namespaces[ns] || {
-                  namespaces: {},
-                  children: []
-                };
-                
-                target = target.namespaces[ns];
-              });
-
-              target.children.push(block.data);
-
-            });
+            transform(blocks, blockTree);
             next();
           });      
         }
