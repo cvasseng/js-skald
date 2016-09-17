@@ -5,6 +5,7 @@
 {{/if}}
 **{{{info.blurb}}}**
 {{#if info.description}}
+
 {{{info.description}}}
 
 {{/if}}
@@ -14,7 +15,7 @@
 {{#each examples}}
 **Example{{#if name}}: {{name}}{{/if}}**
     
-    {{code}}
+    {{{code}}}
 
 {{/each}}
 {{/if}}
@@ -37,6 +38,7 @@
 ### Arguments
 {{#each arguments}}
   * `{{{@key}}} - {{{type}}}`: {{{description}}}
+{{> attributes}}
 {{/each}}
 
 {{/if}}

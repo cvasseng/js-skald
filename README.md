@@ -5,7 +5,13 @@ js-skald
 
 ## Notice
 
-This is a two-hour hack, YMMW. It works for my codestyle, but probably won't for yours. You may wonder why I've bothered doing this and haven't used jsdoc or some other existing tool. Well, aside from getting an almost perverse pleassure out of writing parsers (especially ugly ones like this!) I had to add an obscene amount of magic @ keywords to jsdoc to make it produce the output I needed. Maybe I don't know the configuration options well enough, or maybe I'm just writing really strange code, in either case this thing here does exactly what I needed. And not much more.
+Quick hack, YMMW. It works for my codestyle, but probably won't for yours. 
+You may wonder why I've bothered doing this and haven't used jsdoc or some other existing tool. 
+Well, aside from getting an almost perverse pleassure out of writing parsers 
+(especially ugly ones like this!) I had to add an obscene amount of magic @ keywords to 
+jsdoc to make it produce the output I needed. Maybe I don't know the configuration options well 
+enough, or maybe I'm just writing really strange code, in either case this thing here does 
+exactly what I needed. 
 
 ## Usage
 
@@ -13,11 +19,7 @@ This is a two-hour hack, YMMW. It works for my codestyle, but probably won't for
 
 Stores the output (output.json and output.md) in the output folder where it was ran.
 
-## Use cases
-
-In cases where JavaScript objects are used, but when not using using prototypes. Spits out half-ugly markdown, and a structured JSON document.
-
-**Example**
+## Hello World
     
     /** A simple object
      * Creates an object with the foobar function.
@@ -60,59 +62,51 @@ In cases where JavaScript objects are used, but when not using using prototypes.
            
     {
       "name": "global",
-      "namespaces": {
-        "global": {
-          "namespaces": {},
-          "children": [
-            {
-              "info": {
-                "name": "AnObject",
-                "blurb": "A simple object",
-                "description": "Creates an object with the foobar function.",
-                "type": "object constructor",
-                "filename": "tests/attributes.js",
-                "lineNumber": 11,
-                "namespace": [
-                  "global"
-                ],
-                "definition": "function AnObject (attributes, thing) {"
-              },
-              "arguments": {
-                "attributes": {
-                  "description": "the object properties",
+      "namespaces": {},
+      "children": [
+        {
+          "info": {
+            "name": "AnObject",
+            "blurb": "A simple object",
+            "description": "Creates an object with the foobar function.",
+            "type": "object constructor",
+            "filename": "tests/attributes.js",
+            "lineNumber": 10,
+            "namespace": [],
+            "definition": "function AnObject (attributes, thing) {",
+            "fullName": "AnObject"
+          },
+          "arguments": {
+            "attributes": {
+              "description": "the object properties",
+              "type": "object",
+              "attributes": {
+                "name": {
+                  "description": "the name of the object",
+                  "type": "string"
+                },
+                "size": {
+                  "description": "the size of the object",
                   "type": "object",
                   "attributes": {
-                    "name": {
-                      "description": "the name of the object",
-                      "type": "string"
+                    "x": {
+                      "description": "x-component of the size",
+                      "type": "number"
                     },
-                    "size": {
-                      "description": "the size of the object",
-                      "type": "object",
-                      "attributes": {
-                        "x": {
-                          "description": "x-component of the size",
-                          "type": "number"
-                        },
-                        "y": {
-                          "description": "y-component of the size",
-                          "type": "number"
-                        }
-                      }
+                    "y": {
+                      "description": "y-component of the size",
+                      "type": "number"
                     }
                   }
-                },
-                "thing": {
-                  "description": "the string to log",
-                  "type": "string"
                 }
               }
+            },
+            "thing": {
+              "description": "the string to log",
+              "type": "string"
             }
-          ]
-        },
-        "AnObject": {
-          "namespaces": {},
-          "children": [
+          },
+          "members": [
             {
               "info": {
                 "name": "foobar",
@@ -120,11 +114,13 @@ In cases where JavaScript objects are used, but when not using using prototypes.
                 "description": "This is the description",
                 "type": "member.function",
                 "filename": "tests/attributes.js",
-                "lineNumber": 26,
+                "lineNumber": 23,
                 "namespace": [
                   "AnObject"
                 ],
-                "definition": "foobar: function (a, b) {"
+                "definition": "    foobar: function (a, b) {",
+                "isMember": true,
+                "fullName": "AnObject.foobar"
               },
               "arguments": {
                 "a": {
@@ -161,18 +157,13 @@ In cases where JavaScript objects are used, but when not using using prototypes.
                         "type": "anything"
                       }
                     }
-                  },
-                  "something": {
-                    "description": "",
-                    "type": "unknown"
                   }
                 }
               }
             }
           ]
         }
-      },
-      "children": []
+      ]
     }
 
 Of course, things that "aren't" objects can also be commented.
@@ -185,6 +176,7 @@ Namespaces are deduced automatically if defining things as such:
  
 **General**
 
+  * `@namespace [name]`: force the thing to be a member of a given namespace
   * `@deprecated`: mark as deprecated
   * `@example [title]`: add an example - will include everything until the next keyword.
   * `@type {type}`: override the deduced type
@@ -229,6 +221,7 @@ if you use tabs or spaces, but the use of either should be consistent.
   * Inherit comments
   * Enum types
   * Parse (optional) thing
+  * External configuration files (skaldfile.json or something)
 
 ## License
 
