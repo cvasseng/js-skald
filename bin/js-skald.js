@@ -11,12 +11,7 @@ Licensed under the MIT license. See attached LICENSE file.
 ******************************************************************************/
 
 var parser = require('../lib/parser.js'),
-    fs = require('fs'),
-    blockTree = {      
-      name: 'global',
-      namespaces: {},
-      children: []
-    },
+    fs = require('fs'),   
     templates = require('../lib/templates')(),
     async = require('async'),
     args = process.argv,
@@ -35,14 +30,20 @@ function isFolder(filename) {
 }
 
 function processFiles(list, outdir, name) {
-  var funs = [];
+  var funs = [],
+      blockTree = {      
+        name: 'global',
+        namespaces: {},
+        children: []
+      }
+  ;
 
   if (outdir[outdir.length - 1] !== '/') {
     outdir += '/';
   }
 
   function pushFile(filename) {    
-    console.log('Adding', filename.toString().bold, 'to queue');
+    //console.log('Adding', filename.toString().bold, 'to queue');
     funs.push(
       function (next) {
         parser.parseFile(filename, function (blocks) {
@@ -89,50 +90,9 @@ function processFiles(list, outdir, name) {
 }
 
 function fromArgs() { 
-
-  mkdirp(outdir, function () {
-    templates.load(__dirname + '/../templates/', function () {
-
-      function pushFile(filename) {    
-        console.log('Adding', filename.toString().bold, 'to queue');
-        funs.push(
-          function (next) {
-            parser.parseFile(filename, function (blocks) {
-              transform(blocks, blockTree);
-              next();
-            });      
-          }
-        );
-      }
-
-      args.forEach(function (a, i) {
-        if (i > 1) {
-          if (a[a.length - 1] === '/') {
-            var files = fs.readdirSync(a);
-            if (files) {
-              files.forEach(function (f) {
-                if (f.indexOf('.js') > 0) {
-                  pushFile(a + f);
-                }
-              });
-            }
-          } else if (a.indexOf('.js')) {
-            pushFile(a);
-          }   
-        }
-      });
-
-      async.waterfall(funs, function () {
-        fs.writeFile(outdir + 'tree.json', JSON.stringify(blockTree, undefined, '  ', function (err) {
-          return err && console.log('Error when writing json'.red, err);
-        }));
-
-        templates.dmp('docs', outdir + 'output.md', blockTree, function () {
-
-        });
-      });
-    });
-  });
+  var arguments = Array.prototype.slice.call(args);
+  arguments.slice(0, 1);
+  processFiles(arguments, outdir, 'docs');
 }
 
 fs.readFile('.skald', function (err, data) {
@@ -143,6 +103,8 @@ fs.readFile('.skald', function (err, data) {
 
     data.output = data.output || outdir;
     data.name = data.name || 'Untitled Application';
+    data.usePackageJson = data.usePackageJson || false;
+    data.version = data.version || 'unknown version';
 
     if (data.sources && data.sources.forEach) {
       processFiles(data.sources, data.output, data.name);

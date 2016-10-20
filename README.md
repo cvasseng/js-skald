@@ -19,6 +19,30 @@ exactly what I needed.
 
 Stores the output (output.json and output.md) in the output folder where it was ran.
 
+## Advanced Options
+
+Advanced options can be specified by creating a `.skald` file in your project root.
+js-skald will use this file when it exists for it's options, skipping any arguments passed
+to the command line.
+
+The format of this file is as follows:
+    
+    {
+      "name": "<name of application>",
+      "output": "<output folder>",
+
+      //The sources should either be defined like this, or in the group attribute
+      "sources": [<array of sources>],
+      
+      //Sources can be parsed in groups. Each group will produce a separate
+      //output file.
+      "group": {
+        "MyGroup": [
+          <array of sources>
+        ]
+      }
+    }
+
 ## Hello World
     
     /** A simple object
@@ -58,119 +82,13 @@ Stores the output (output.json and output.md) in the output folder where it was 
       }
     }
 
-**Generates the following JSON**
-           
-    {
-      "name": "global",
-      "namespaces": {},
-      "children": [
-        {
-          "info": {
-            "name": "AnObject",
-            "blurb": "A simple object",
-            "description": "Creates an object with the foobar function.",
-            "type": "object constructor",
-            "filename": "tests/attributes.js",
-            "lineNumber": 10,
-            "namespace": [],
-            "definition": "function AnObject (attributes, thing) {",
-            "fullName": "AnObject"
-          },
-          "arguments": {
-            "attributes": {
-              "description": "the object properties",
-              "type": "object",
-              "attributes": {
-                "name": {
-                  "description": "the name of the object",
-                  "type": "string"
-                },
-                "size": {
-                  "description": "the size of the object",
-                  "type": "object",
-                  "attributes": {
-                    "x": {
-                      "description": "x-component of the size",
-                      "type": "number"
-                    },
-                    "y": {
-                      "description": "y-component of the size",
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            },
-            "thing": {
-              "description": "the string to log",
-              "type": "string"
-            }
-          },
-          "members": [
-            {
-              "info": {
-                "name": "foobar",
-                "blurb": "This is the blurb.",
-                "description": "This is the description",
-                "type": "member.function",
-                "filename": "tests/attributes.js",
-                "lineNumber": 23,
-                "namespace": [
-                  "AnObject"
-                ],
-                "definition": "    foobar: function (a, b) {",
-                "isMember": true,
-                "fullName": "AnObject.foobar"
-              },
-              "arguments": {
-                "a": {
-                  "description": "this is an arg description",
-                  "type": "number"
-                },
-                "b": {
-                  "description": "this too",
-                  "type": "string"
-                }
-              },
-              "return": {
-                "description": "an object",
-                "type": "object",
-                "attributes": {
-                  "thing": {
-                    "description": "constructor thing",
-                    "type": "string"
-                  },
-                  "attributes": {
-                    "description": "the object passed to the constructor",
-                    "type": "object"
-                  },
-                  "passed": {
-                    "description": "object of args passed to the function",
-                    "type": "object",
-                    "attributes": {
-                      "a": {
-                        "description": "a arg",
-                        "type": "anything"
-                      },
-                      "b": {
-                        "description": "b arg",
-                        "type": "anything"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
-      ]
-    }
-
 Of course, things that "aren't" objects can also be commented.
 
 Namespaces are deduced automatically if defining things as such:
   
     MyNamespace.MyNestedNamespace.fn = function (..) {..}
+    OR
+    MyPrototypeObject.prototype.fn = function (..) {..}
 
 ## Supported Keywords
  
@@ -183,6 +101,8 @@ Namespaces are deduced automatically if defining things as such:
   * `@memberof namespace`: set as a member of a given namespace
   * `@todo <description>`: add a todo entry
   * `@author <author name>`: set the author of the documented thing
+  * `@module`: this is a module interface (experimental)
+  * `@name`: override the parsed name. Note that by default the name of the thing being documented is parsed and used.
 
 **Functions**
   

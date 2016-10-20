@@ -11,7 +11,6 @@
 {{/if}}
 {{#if examples}}
 ### Examples
-
 {{#each examples}}
 {{#if name}}**{{name}}**{{/if}}
     
@@ -30,7 +29,7 @@
 {{#if methods}}
 ### Methods
 {{#each methods}}
-  * `{{info.name}}({{#each arguments}}{{#if @index}}, {{/if}}{{@key}}{{/each}})`: {{info.blurb}}
+  * `{{info.name}}({{#each arguments}}{{#if @index}}, {{/if}}{{@key}}{{/each}})`: {{{info.blurb}}}{{#if return}} - returns `{{{return.type}}}`: {{return.description}}{{/if}}
 {{#each arguments}}
     * `{{@key}}`: `{{{type}}}`, {{description}}
     {{> attributes}}
