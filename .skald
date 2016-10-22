@@ -1,0 +1,8 @@
+{
+  "name": "js-skald",
+  "groups": {
+    "tests": [
+      "tests"  
+    ]
+  }
+}

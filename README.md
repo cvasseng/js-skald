@@ -1,17 +1,17 @@
 js-skald
 ====
 
-**A super quick hack to generate documentation from JavaScript code not using prototypes.**
+**The JavaScript to markdown API reference generator**
 
 ## Notice
 
 Quick hack, YMMW. It works for my codestyle, but probably won't for yours. 
-You may wonder why I've bothered doing this and haven't used jsdoc or some other existing tool. 
-Well, aside from getting an almost perverse pleassure out of writing parsers 
-(especially ugly ones like this!) I had to add an obscene amount of magic @ keywords to 
-jsdoc to make it produce the output I needed. Maybe I don't know the configuration options well 
-enough, or maybe I'm just writing really strange code, in either case this thing here does 
-exactly what I needed. 
+You may wonder why I've bothered doing this and haven't used jsdoc or some other existing tool. Well, aside from getting an almost perverse pleassure out of writing parsers 
+(especially ugly ones like this!) I had to add an obscene amount of magic @ keywords to jsdoc to make it produce the output I needed. Maybe I don't know the configuration options well enough, or maybe I'm just writing really strange code, in either case this thing here does exactly what I needed. 
+
+## Installing
+
+`npm install -g js-skald`
 
 ## Usage
 
